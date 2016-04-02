@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Application.SingleInstan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Application.WindowStartup", "CB.Application.WindowStartup\CB.Application.WindowStartup.csproj", "{8AB86EDB-E6EC-4936-BA55-229EE2D898E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Win32.Windows", "..\CB.Win32\CB.Win32.Windows\CB.Win32.Windows.csproj", "{CC057CF3-A226-43C3-9A11-7FC66059D130}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8AB86EDB-E6EC-4936-BA55-229EE2D898E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AB86EDB-E6EC-4936-BA55-229EE2D898E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AB86EDB-E6EC-4936-BA55-229EE2D898E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC057CF3-A226-43C3-9A11-7FC66059D130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC057CF3-A226-43C3-9A11-7FC66059D130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC057CF3-A226-43C3-9A11-7FC66059D130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC057CF3-A226-43C3-9A11-7FC66059D130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
