@@ -19,6 +19,17 @@ namespace CB.Application.ContextMenuCommands
 
 
         #region Methods
+        public static void AddCommand(CommandCategories categories, ContextMenuCommandItem commandItem)
+        {
+            foreach (var subKeyName in GetCategorySubKeys(categories))
+            {
+                using (var key = Registry.ClassesRoot.OpenOrCreateSubKey(subKeyName))
+                {
+                    commandItem.CreateIn(key);
+                }
+            }
+        }
+
         public static bool AddCommand(CommandCategories categories, string cmdName, string appPath,
             bool passFilePathToApp, string iconPath = null, params string[] additionalArgs)
             => AddCommand(categories, cmdName, iconPath, CreateCmdArgArray(appPath, passFilePathToApp, additionalArgs));
@@ -136,6 +147,28 @@ namespace CB.Application.ContextMenuCommands
             cmdArgList.AddRange(additionalArgs);
             var cmdArgs = cmdArgList.ToArray();
             return cmdArgs;
+        }
+
+        private static IEnumerable<string> GetCategorySubKeys(CommandCategories categories)
+        {
+            var subKeys = new List<string>();
+            if (categories.HasFlag(CommandCategories.AllDirectories))
+            {
+                subKeys.Add(ALL_DIRECTORIES);
+            }
+            if (categories.HasFlag(CommandCategories.AllDrives))
+            {
+                subKeys.Add(ALL_DRIVES);
+            }
+            if (categories.HasFlag(CommandCategories.AllFiles))
+            {
+                subKeys.Add(ALL_FILES);
+            }
+            if (categories.HasFlag(CommandCategories.Background))
+            {
+                subKeys.Add(BACKGROUND);
+            }
+            return subKeys;
         }
 
         private static string GetIconPath(string appPath, bool useDefaultIcon)

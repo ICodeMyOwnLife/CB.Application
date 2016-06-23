@@ -43,8 +43,8 @@
     <Compile Include="CascadingContextMenuCommandItem.cs" />
     <Compile Include="CommandCategories.cs" />
     <Compile Include="ContextMenuCommandIcon.cs" />
+    <Compile Include="SingleContextMenuCommandItem.cs" />
     <Compile Include="ContextMenuCommandItem.cs" />
-    <Compile Include="ContextMenuCommandItemBase.cs" />
     <Compile Include="ContextMenuCommandManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistryHelpers.cs" />

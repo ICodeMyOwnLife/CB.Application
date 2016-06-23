@@ -1,27 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Win32;
 
 
 namespace CB.Application.ContextMenuCommands
 {
-    public class ContextMenuCommandItem: ContextMenuCommandItemBase
+    public abstract class ContextMenuCommandItem
     {
-        #region  Properties & Indexers
-        public string Command { get; set; }
+        #region Fields
+        protected const string COMMAND = "command";
+        protected const string ICON = "icon";
+        protected const string SHELL = "shell";
         #endregion
 
 
-        #region Override
-        public override void CreateIn(RegistryKey key)
-        {
-            base.CreateIn(key);
-            UseMainKey(key, mainKey =>
+        #region  Properties & Indexers
+        public ContextMenuCommandIcon Icon { get; set; }
+        public string Name { get; set; }
+        #endregion
+
+
+        #region Methods
+        public static SingleContextMenuCommandItem FromAppPath(string name, string appPath,
+            bool passFilePathToApp, string iconPath, params string[] args)
+            => FromAppPath(name, appPath, passFilePathToApp, ContextMenuCommandIcon.FromIconPath(iconPath), args);
+
+        public static SingleContextMenuCommandItem FromAppPath(string name, string appPath,
+            bool passFilePathToApp, ContextMenuCommandIcon icon, params string[] args)
+            => new SingleContextMenuCommandItem
             {
-                mainKey.SetValue("", Name);
-                using (var commandKey = mainKey.OpenOrCreateSubKey(COMMAND))
+                Name = name,
+                Icon = icon,
+                Command = CreateCommand(appPath, passFilePathToApp, args)
+            };
+
+        public static SingleContextMenuCommandItem FromAppPath(string name, string appPath,
+            bool passFilePathToApp, bool useDefaultIcon, params string[] args)
+            =>
+                FromAppPath(name, appPath, passFilePathToApp,
+                    useDefaultIcon ? ContextMenuCommandIcon.FromAppPath(appPath) : ContextMenuCommandIcon.None, args);
+
+        public virtual void CreateIn(RegistryKey key)
+            => UseMainKey(key, mainKey =>
+            {
+                if (!string.IsNullOrEmpty(Icon.Path))
                 {
-                    commandKey.SetValue("", Command);
+                    mainKey.SetValue(ICON, Icon.Path);
                 }
             });
+        #endregion
+
+
+        #region Implementation
+        private static string CreateCommand(string appPath, bool passFilePathToApp, IEnumerable<string> args)
+        {
+            var list = new List<string> { appPath };
+            if (passFilePathToApp)
+            {
+                list.Add("%1");
+            }
+            list.AddRange(args);
+            return string.Join(" ", list.Select(s => $"\"{s}\""));
+        }
+
+        protected virtual void UseMainKey(RegistryKey key, Action<RegistryKey> action)
+        {
+            using (var shellKey = key.OpenOrCreateSubKey(SHELL))
+            {
+                using (var mainKey = shellKey.OpenOrCreateSubKey(Name))
+                {
+                    action(mainKey);
+                }
+            }
         }
         #endregion
     }

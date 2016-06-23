@@ -1,6 +1,22 @@
 namespace CB.Application.ContextMenuCommands
 {
-    public struct ContextMenuCommandIcon
+    public class ContextMenuCommandIcon
+    {
+        #region  Properties & Indexers
+        public static ContextMenuCommandIcon None { get; } = new ContextMenuCommandIcon();
+        public string Path { get; private set; }
+        #endregion
+
+
+        #region Methods
+        public static ContextMenuCommandIcon FromAppPath(string app)
+            => new ContextMenuCommandIcon { Path = $"\"{app}\",0" };
+
+        public static ContextMenuCommandIcon FromIconPath(string path) => new ContextMenuCommandIcon { Path = path };
+        #endregion
+    }
+
+    /*public struct ContextMenuCommandIcon
     {
         #region Fields
         internal bool _useDefaultAppIcon;
@@ -37,5 +53,5 @@ namespace CB.Application.ContextMenuCommands
         #region Implementation
         internal string GetDefaultAppIcon(string appPath) => $"\"{0}\",0";
         #endregion
-    }
+    }*/
 }

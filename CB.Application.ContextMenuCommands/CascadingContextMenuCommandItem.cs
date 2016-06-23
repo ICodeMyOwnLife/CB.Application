@@ -4,7 +4,7 @@ using Microsoft.Win32;
 
 namespace CB.Application.ContextMenuCommands
 {
-    public class CascadingContextMenuCommandItem: ContextMenuCommandItemBase
+    public class CascadingContextMenuCommandItem: ContextMenuCommandItem
     {
         #region Fields
         protected const string SUB_COMMANDS = "subcommands";
@@ -12,7 +12,7 @@ namespace CB.Application.ContextMenuCommands
 
 
         #region  Commands
-        public IEnumerable<ContextMenuCommandItemBase> SubCommands { get; set; }
+        public IEnumerable<ContextMenuCommandItem> SubCommands { get; set; }
         #endregion
 
 
