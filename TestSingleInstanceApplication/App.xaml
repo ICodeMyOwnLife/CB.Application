@@ -1,0 +1,8 @@
+﻿<local:SingleInstanceViewApplication x:Class="TestSingleInstanceApplication.App"
+                                                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                                         xmlns:local="clr-namespace:TestSingleInstanceApplication">
+    <Application.Resources>
+
+    </Application.Resources>
+</local:SingleInstanceViewApplication>
