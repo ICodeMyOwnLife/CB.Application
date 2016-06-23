@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Application.ContextMenuCommands", "CB.Application.ContextMenuCommands\CB.Application.ContextMenuCommands.csproj", "{57AF56F3-15AC-4F4E-8952-417D21A67236}"
 EndProject
@@ -10,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Application.WindowStartup", "CB.Application.WindowStartup\CB.Application.WindowStartup.csproj", "{8AB86EDB-E6EC-4936-BA55-229EE2D898E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Win32.Windows", "..\CB.Win32\CB.Win32.Windows\CB.Win32.Windows.csproj", "{CC057CF3-A226-43C3-9A11-7FC66059D130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Win32.Common", "..\CB.Win32\CB.Win32.Common\CB.Win32.Common.csproj", "{940BFD3A-4CD1-4579-86EA-B22D5A3A6942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Win32.Cursors", "..\CB.Win32\CB.Win32.Cursors\CB.Win32.Cursors.csproj", "{F4EEBCE3-CA88-494C-871A-FDF4A7A1AA64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Win32.Threading", "..\CB.Win32\CB.Win32.Threading\CB.Win32.Threading.csproj", "{521917E4-C35F-4044-9E3B-D30E71DBFE43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestContextMenuCommands", "TestContextMenuCommands\TestContextMenuCommands.csproj", "{3BF6AA7C-18BF-484D-BA56-8C65B95D9FDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,22 @@ Global
 		{CC057CF3-A226-43C3-9A11-7FC66059D130}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC057CF3-A226-43C3-9A11-7FC66059D130}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC057CF3-A226-43C3-9A11-7FC66059D130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940BFD3A-4CD1-4579-86EA-B22D5A3A6942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940BFD3A-4CD1-4579-86EA-B22D5A3A6942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940BFD3A-4CD1-4579-86EA-B22D5A3A6942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940BFD3A-4CD1-4579-86EA-B22D5A3A6942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4EEBCE3-CA88-494C-871A-FDF4A7A1AA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4EEBCE3-CA88-494C-871A-FDF4A7A1AA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4EEBCE3-CA88-494C-871A-FDF4A7A1AA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4EEBCE3-CA88-494C-871A-FDF4A7A1AA64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{521917E4-C35F-4044-9E3B-D30E71DBFE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{521917E4-C35F-4044-9E3B-D30E71DBFE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{521917E4-C35F-4044-9E3B-D30E71DBFE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{521917E4-C35F-4044-9E3B-D30E71DBFE43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF6AA7C-18BF-484D-BA56-8C65B95D9FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF6AA7C-18BF-484D-BA56-8C65B95D9FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF6AA7C-18BF-484D-BA56-8C65B95D9FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF6AA7C-18BF-484D-BA56-8C65B95D9FDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

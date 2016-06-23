@@ -5,52 +5,6 @@ using Microsoft.Win32;
 
 namespace CB.Application.ContextMenuCommands
 {
-    public abstract class ContextMenuCommandItemBase
-    {
-        #region  Properties & Indexers
-        public ContextMenuCommandIcon Icon { get; set; }
-        public string Name { get; set; }
-        #endregion
-    }
-
-    public class ContextMenuCommandItem: ContextMenuCommandItemBase
-    {
-        #region  Properties & Indexers
-        public string Command { get; set; }
-        #endregion
-    }
-
-    public class CascadingContextMenuCommandItem: ContextMenuCommandItemBase
-    {
-        #region  Properties & Indexers
-        public ContextMenuCommandItemBase[] Items { get; set; }
-        #endregion
-    }
-
-    public struct ContextMenuCommandIcon
-    {
-        public string IconPath { get; set; }
-        public static ContextMenuCommandIcon None => new ContextMenuCommandIcon { IconPath = null };
-        public static ContextMenuCommandIcon DefaultAppIcon => new ContextMenuCommandIcon { _useDefaultAppIcon = true };
-
-        internal bool UseDefaultAppIcon
-        {
-            get { return _useDefaultAppIcon; }
-            set { _useDefaultAppIcon = value; }
-        }
-
-        public static ContextMenuCommandIcon FromPath(string iconPath) => new ContextMenuCommandIcon(iconPath);
-        internal bool _useDefaultAppIcon;
-
-        internal string GetDefaultAppIcon(string appPath) => $"\"{0}\",0";
-
-        public ContextMenuCommandIcon(string iconPath)
-        {
-            _useDefaultAppIcon = false;
-            IconPath = iconPath;
-        }
-    }
-
     public class ContextMenuCommandManager
     {
         #region Fields
