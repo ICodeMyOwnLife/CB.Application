@@ -46,6 +46,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IApplication.cs" />
     <Compile Include="IArgsProcessor.cs" />
     <Compile Include="IInitializeComponent.cs" />
     <Compile Include="IRun.cs" />

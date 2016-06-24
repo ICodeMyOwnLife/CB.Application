@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualBasic.ApplicationServices;
 
 
 namespace CB.Application.SingleInstanceApplication
 {
     public class SingleInstanceApplicationController<TApplication>: WindowsFormsApplicationBase
-        where TApplication: IRun, IArgsProcessor, IInitializeComponent, new()
+        where TApplication: IApplication, IProcessArgs, new()
     {
         #region Fields
         private TApplication _app;
@@ -26,14 +27,23 @@ namespace CB.Application.SingleInstanceApplication
             _app = new TApplication();
             _app.InitializeComponent();
             _app.Run();
+            ProcessCommandLine(eventArgs.CommandLine);
             return false;
         }
 
         protected override void OnStartupNextInstance(StartupNextInstanceEventArgs eventArgs)
         {
-            if (eventArgs.CommandLine.Count > 0)
+            ProcessCommandLine(eventArgs.CommandLine);
+        }
+        #endregion
+
+
+        #region Implementation
+        private void ProcessCommandLine(IReadOnlyCollection<string> commandLine)
+        {
+            if (commandLine.Count > 0)
             {
-                _app.ArgsProcessor?.ProcessArgs(eventArgs.CommandLine.ToArray());
+                _app?.ProcessArgs(commandLine.ToArray());
             }
         }
         #endregion
