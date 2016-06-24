@@ -46,7 +46,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IArgsProcessor.cs" />
+    <Compile Include="IInitializeComponent.cs" />
+    <Compile Include="IRun.cs" />
     <Compile Include="SingleInstanceApplication.cs" />
+    <Compile Include="SingleInstanceApplicationController.cs" />
     <Compile Include="SingleInstanceViewApplication.cs" />
     <Compile Include="IProcessArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
