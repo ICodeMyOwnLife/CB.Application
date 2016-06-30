@@ -49,6 +49,7 @@
     <Compile Include="IApplication.cs" />
     <Compile Include="IArgsProcessor.cs" />
     <Compile Include="IInitializeComponent.cs" />
+    <Compile Include="IProcessArgsApplication.cs" />
     <Compile Include="IRun.cs" />
     <Compile Include="SingleInstanceApplication.cs" />
     <Compile Include="SingleInstanceApplicationController.cs" />

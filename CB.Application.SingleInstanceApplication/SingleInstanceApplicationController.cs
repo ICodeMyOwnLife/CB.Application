@@ -6,7 +6,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 namespace CB.Application.SingleInstanceApplication
 {
     public class SingleInstanceApplicationController<TApplication>: WindowsFormsApplicationBase
-        where TApplication: IApplication, IProcessArgs, new()
+        where TApplication: IProcessArgsApplication, new()
     {
         #region Fields
         private TApplication _app;
