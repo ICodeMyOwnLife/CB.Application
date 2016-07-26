@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Win32;
 
 
@@ -40,15 +41,25 @@ namespace CB.Application.WindowStartup
             }
         }
 
+        public static bool IsStartupSet()
+            => IsStartupSet(GetCurrentAppName());
+
         /// <summary>
         ///     Delete the information of an application from the startup registry key.
         /// </summary>
         /// <param name="appName">The name the the application.</param>
         /// <returns>True if succeed; otherwise false.</returns>
         public static bool ResetStartup(string appName)
-        {
-            return DeleteStartupKey(appName);
-        }
+            => DeleteStartupKey(appName);
+
+        public static bool ResetStartup()
+            => ResetStartup(GetCurrentAppName());
+
+        public static bool SetStartup(string appName, params string[] args)
+            => SetStartup(appName, GetCurrentAppPath(), args);
+
+        public static bool SetStartup(params string[] args)
+            => SetStartup(GetCurrentAppName(), GetCurrentAppPath(), args);
 
         /// <summary>
         ///     Write to the startup registry key the information of an application.
@@ -68,8 +79,8 @@ namespace CB.Application.WindowStartup
             var arguments = args.Where(s => !string.IsNullOrEmpty(s))
                                 .Select(PutInQuotes).ToArray();
 
-            var value = arguments.Any() ? PutInQuotes(appPath) + " " + string.Join(" ", arguments) : appPath;
-
+            var quotedAppPath = PutInQuotes(appPath);
+            var value = arguments.Any() ? quotedAppPath + " " + string.Join(" ", arguments) : quotedAppPath;
             return SetStartupKeyValue(appName, value);
         }
         #endregion
@@ -100,15 +111,17 @@ namespace CB.Application.WindowStartup
             return false;
         }
 
+        private static string GetCurrentAppName()
+            => Assembly.GetEntryAssembly().GetName().Name;
+
+        private static string GetCurrentAppPath()
+            => Assembly.GetEntryAssembly().Location;
+
         private static RegistryKey GetStartupKey()
-        {
-            return Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-        }
+            => Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
 
         private static string PutInQuotes(string s)
-        {
-            return $@"""{s}""";
-        }
+            => $@"""{s}""";
 
         private static bool SetStartupKeyValue(string appName, string value)
         {
