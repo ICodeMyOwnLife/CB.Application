@@ -32,9 +32,7 @@ namespace CB.Application.SingleInstanceApplication
         }
 
         protected override void OnStartupNextInstance(StartupNextInstanceEventArgs eventArgs)
-        {
-            ProcessCommandLine(eventArgs.CommandLine);
-        }
+            => ProcessCommandLine(eventArgs.CommandLine);
         #endregion
 
 
